@@ -27,7 +27,7 @@ def remove_files_in_directory(directory_path):
 
 
 async def download(page, button, to_path):
-    async with page.expect_download(timeout=5 * 60 * 1000) as download_info:
+    async with page.expect_download(timeout=120 * 60 * 1000) as download_info:
         # Perform the action that initiates download
         # await page.get_by_text("Download file").click()
         await button.click()
