@@ -51,7 +51,7 @@ async def usa_spending_downloader(headless=True):
     page = await context.new_page()
     url = "https://www.usaspending.gov/search/"
     await page.goto(url, timeout=60000)
-    await page.wait_for_load_state("networkidle")
+    # await page.wait_for_load_state("networkidle")
 
     await page.wait_for_selector("div.search-results", state="attached", timeout=60000)
 

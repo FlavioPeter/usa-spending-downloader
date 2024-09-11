@@ -2,7 +2,7 @@
 rm -rf venv-us
 python3 -m venv venv-us
 source venv-us/bin/activate
-pip3 install jupyter ipykernel playwright
+pip3 install jupyter ipykernel playwright termvolor
 playwright install chromium
 
 # extra setup
