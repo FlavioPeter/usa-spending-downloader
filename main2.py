@@ -43,11 +43,11 @@ async def download(page, button, to_path):
 
 async def download_the(page, what, to_path):
     await page.wait_for_selector(
-        "div.usa-dt-tab__label", state="attached", timeout=60 * 1000
+        "div.usa-dt-tab__label", state="attached", timeout=3 * 60 * 1000
     )
     await page.click("button[title='Download']")
     await page.wait_for_selector(
-        "div.full-download-modal", state="attached", timeout=60 * 1000
+        "div.full-download-modal", state="attached", timeout=3 * 60 * 1000
     )
     download_window = await page.query_selector("div.full-download-modal")
     button = await download_window.query_selector(f"button:has-text('{what}')")
@@ -133,20 +133,20 @@ async def usa_spending_downloader(headless=True):
         missing_award = True
         missing_transaction = True
         if len(zips) == 2:
-            print(colored("Already downloaded both files"))
+            print(colored("Already downloaded both files", "green"))
             continue
         else:
             missing_award = (
                 sum(["PrimeAwardSummariesAndSubawards" in f for f in zips]) == 0
             )
             if not missing_award:
-                print(colored("Awards already downloaded"))
+                print(colored("Awards already downloaded", "green"))
 
             missing_transaction = (
                 sum(["SubawardsAndPrimeTransactions" in f for f in zips]) == 0
             )
             if not missing_transaction:
-                print(colored("Transactions already downloaded"))
+                print(colored("Transactions already downloaded", "green"))
 
         # remove_files_in_directory(download_year_dir)
 
